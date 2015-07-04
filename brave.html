@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1, user-scalable=no" />
+
+<title>Brave</title>
+<!-- Phone -->
+<link href="style.css" rel="stylesheet" type="text/css" media="only screen and (min-width:202px) and (max-width:498px)" />
+<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+    function validate()
+    {
+        var username= document.getElementById("uname").value;
+        var str = document.getElementById("pwd").value;
+        if (uname=="hi" && password =="wassup") 
+        {
+            alert("login Successfully");
+        }
+        else if(username.length==0)
+        {
+            document.getElementById("banner").style.display="block";
+			document.getElementById('banner').innerHTML="Username is required";
+            document.getElementById("uname").style.borderColor="red";
+            document.signup.Name.focus();
+        }
+		
+    	else if (str.length < 6) 
+			{
+				 document.getElementById("banner").style.display="block";
+				 document.getElementById('banner').innerHTML="Password length should be atleast 6";
+				 document.getElementById("pwd").style.borderColor="red";
+                 document.signup.password.focus();
+       			 
+    		} 
+			
+    	else if (str.search(/[0-9]/) == -1)
+		 {
+         document.getElementById("banner").style.display="block";
+				 document.getElementById('banner').innerHTML="Password should contain a numeric value";
+				 document.getElementById("pwd").style.borderColor="red";
+                 document.signup.password.focus();
+    	} 
+		else if (str.search(/[A-Z]/) == -1)
+		 {
+        document.getElementById("banner").style.display="block";
+				 document.getElementById('banner').innerHTML="Password should contain atleast one Capital letter";
+				 document.getElementById("pwd").style.borderColor="red";
+                 document.signup.password.focus();
+    	} 
+		
+	else if (str.search(/[^a-zA-Z0-9\!\@\#\$\%\^\&\*\(\)\_\+\.\,\;\:]/) != -1)
+	 {
+        document.getElementById("banner").style.display="block";
+				 document.getElementById('banner').innerHTML="Irrelevant character found";
+				 document.getElementById("pwd").style.borderColor="red";
+                 document.signup.password.focus();
+    }
+    
+    }
+<!--menu display function-->
+    function menuToggle()
+    {
+    var menubtn = document.getElementById('mainmenu');
+    var sub = document.getElementById('sub');
+    if(menubtn)
+    {
+    menubtn.addEventListener('click', function () {
+    var closed = sub.className.indexOf('closed') !== -1;
+    if (closed) 
+	{
+        sub.className = sub.className.replace('closed', 'open');
+    } else 
+    {
+        sub.className = sub.className.replace('open', 'closed');
+    }
+        });
+	}
+}
+<!--password toggle function-->
+function show()
+{
+var p = document.getElementById('pwd');
+p.setAttribute('type','text');  
+}
+
+function hide()
+{
+   var p = document.getElementById('pwd');
+p.setAttribute('type','password');   
+}
+
+function showHide()
+{
+  var input = document.getElementById("pwd");
+  if (input.getAttribute("type") === "password") {
+    show();
+  } else {
+    hide();
+  }
+}
+</script>
+</head>
+<body onload="menuToggle()">
+<div class="main">
+<div class="navigate" role="navigation">
+    
+<nav>
+<ul>
+  <li class="brave"><a href="#home">The Brave UX App</a></li>
+  <li class="menu" id="parentmenu"><a href="#about" id="mainmenu">Menu<span class="box-shadow-menu"></span></a>
+
+
+  <ul class="sub closed" id="sub">
+            <li><a href="#">Dashboard></a></li>
+            <li><a href="#">My Profile</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Help</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Logout</a></li>
+    </ul>
+    </li>
+    </ul>
+</nav>
+</div><!--navigate-->
+<div class="center">
+<img src="icon.png" id="icon">
+<p id="bookmark">Do NOT bookmark this page</p>
+<p id="sig"><b>Sign Up</b></p>
+<div class="form">
+    <form name="signup" class="signup">
+        <input type="text" placeholder="Username" id="uname" name="Name" />
+        <input type="password" placeholder="Password" id="pwd" class="masked" name="password" />
+        <button type="button" id="eye" onclick="showHide()">
+        	<img src="eye.png" alt="eye"/>
+         </button>
+        <button id="btn" type="button" onclick="validate()">SignUp</button> <span class="help">Need Help?</span>
+    </form>
+</div><!--form-->
+
+</div><!--center-->
+<div class="ebanner" id="banner">
+    
+</div>
+<div class="bottom">
+    <div id="bottom-content">Powered by Brave UX</div>
+</div><!--bottom-->
+</div><!--main-->
+
+</body>
+
+</html>
